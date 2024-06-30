@@ -10,7 +10,7 @@ class IoConnectionTest extends \PHPUnit\Framework\TestCase {
     protected $conn;
 
     public function setUp():void {
-        $this->sock = $this->getMock('\\React\\Socket\\ConnectionInterface');
+        $this->sock = $this->createMock('\\React\\Socket\\ConnectionInterface');
         $this->conn = new IoConnection($this->sock);
     }
 

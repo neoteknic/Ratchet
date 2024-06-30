@@ -7,7 +7,7 @@ class EchoServerTest extends \PHPUnit\Framework\TestCase {
     protected $_comp;
 
     public function setUp():void {
-        $this->_conn = $this->getMock('\Ratchet\ConnectionInterface');
+        $this->_conn = $this->createMock('\Ratchet\ConnectionInterface');
         $this->_comp = new EchoServer;
     }
 

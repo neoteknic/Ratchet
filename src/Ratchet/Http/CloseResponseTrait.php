@@ -9,7 +9,7 @@ trait CloseResponseTrait {
      * Close a connection with an HTTP response
      * @param \Ratchet\ConnectionInterface $conn
      * @param int                          $code HTTP status code
-     * @return null
+     * @return void
      */
     private function close(ConnectionInterface $conn, $code = 400, array $additional_headers = []) {
         $response = new Response($code, array_merge([

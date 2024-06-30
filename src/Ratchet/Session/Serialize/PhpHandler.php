@@ -30,7 +30,7 @@ class PhpHandler implements HandlerInterface {
         $offset     = 0;
 
         while ($offset < strlen($raw)) {
-            if (!strstr(substr($raw, $offset), "|")) {
+            if (!str_contains(substr($raw, $offset), "|")) {
                 throw new \UnexpectedValueException("invalid data, remaining: " . substr($raw, $offset));
             }
 
