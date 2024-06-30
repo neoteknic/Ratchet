@@ -4,9 +4,9 @@ namespace Ratchet\Wamp;
 /**
  * @covers Ratchet\Wamp\Topic
  */
-class TopicTest extends \PHPUnit_Framework_TestCase {
+class TopicTest extends \PHPUnit\Framework\TestCase {
     public function testGetId() {
-        $id    = uniqid();
+        $id    = uniqid('', true);
         $topic = new Topic($id);
 
         $this->assertEquals($id, $topic->getId());

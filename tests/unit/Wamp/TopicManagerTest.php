@@ -4,7 +4,7 @@ namespace Ratchet\Wamp;
 /**
  * @covers Ratchet\Wamp\TopicManager
  */
-class TopicManagerTest extends \PHPUnit_Framework_TestCase {
+class TopicManagerTest extends \PHPUnit\Framework\TestCase {
     private $mock;
 
     /**
@@ -17,7 +17,7 @@ class TopicManagerTest extends \PHPUnit_Framework_TestCase {
      */
     private $conn;
 
-    public function setUp() {
+    public function setUp():void {
         $this->conn = $this->getMock('\Ratchet\ConnectionInterface');
         $this->mock = $this->getMock('\Ratchet\Wamp\WampServerInterface');
         $this->mngr = new TopicManager($this->mock);
@@ -65,7 +65,7 @@ class TopicManagerTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testOnCall() {
-        $id = uniqid();
+        $id = uniqid('', true);
 
         $this->mock->expects($this->once())->method('onCall')->with(
             $this->conn

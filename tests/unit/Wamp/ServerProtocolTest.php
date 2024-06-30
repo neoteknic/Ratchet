@@ -8,12 +8,12 @@ use Ratchet\Mock\WampComponent as TestComponent;
  * @covers \Ratchet\Wamp\WampServerInterface
  * @covers \Ratchet\Wamp\WampConnection
  */
-class ServerProtocolTest extends \PHPUnit_Framework_TestCase {
+class ServerProtocolTest extends \PHPUnit\Framework\TestCase {
     protected $_comp;
 
     protected $_app;
 
-    public function setUp() {
+    public function setUp():void {
         $this->_app  = new TestComponent;
         $this->_comp = new ServerProtocol($this->_app);
     }

@@ -4,17 +4,17 @@ namespace Ratchet\Wamp;
 /**
  * @covers Ratchet\Wamp\WampConnection
  */
-class WampConnectionTest extends \PHPUnit_Framework_TestCase {
+class WampConnectionTest extends \PHPUnit\Framework\TestCase {
     protected $conn;
     protected $mock;
 
-    public function setUp() {
+    public function setUp():void {
         $this->mock = $this->getMock('\\Ratchet\\ConnectionInterface');
         $this->conn = new WampConnection($this->mock);
     }
 
     public function testCallResult() {
-        $callId = uniqid();
+        $callId = uniqid('', true);
         $data   = array('hello' => 'world', 'herp' => 'derp');
 
         $this->mock->expects($this->once())->method('send')->with(json_encode(array(3, $callId, $data)));
@@ -23,7 +23,7 @@ class WampConnectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testCallError() {
-        $callId = uniqid();
+        $callId = uniqid('', true);
         $uri    = 'http://example.com/end/point';
 
         $this->mock->expects($this->once())->method('send')->with(json_encode(array(4, $callId, $uri, '')));
@@ -32,7 +32,7 @@ class WampConnectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testCallErrorWithTopic() {
-        $callId = uniqid();
+        $callId = uniqid('', true);
         $uri    = 'http://example.com/end/point';
 
         $this->mock->expects($this->once())->method('send')->with(json_encode(array(4, $callId, $uri, '')));
@@ -41,7 +41,7 @@ class WampConnectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testDetailedCallError() {
-        $callId = uniqid();
+        $callId = uniqid('', true);
         $uri    = 'http://example.com/end/point';
         $desc   = 'beep boop beep';
         $detail = 'Error: Too much awesome';

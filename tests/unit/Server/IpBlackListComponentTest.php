@@ -5,11 +5,11 @@ use Ratchet\Server\IpBlackList;
 /**
  * @covers Ratchet\Server\IpBlackList
  */
-class IpBlackListTest extends \PHPUnit_Framework_TestCase {
+class IpBlackListTest extends \PHPUnit\Framework\TestCase {
     protected $blocker;
     protected $mock;
 
-    public function setUp() {
+    public function setUp(): void {
         $this->mock = $this->getMock('\\Ratchet\\MessageComponentInterface');
         $this->blocker = new IpBlackList($this->mock);
     }

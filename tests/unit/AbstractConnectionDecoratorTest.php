@@ -6,12 +6,12 @@ use Ratchet\Mock\ConnectionDecorator;
  * @covers Ratchet\AbstractConnectionDecorator
  * @covers Ratchet\ConnectionInterface
  */
-class AbstractConnectionDecoratorTest extends \PHPUnit_Framework_TestCase {
+class AbstractConnectionDecoratorTest extends \PHPUnit\Framework\TestCase {
     protected $mock;
     protected $l1;
     protected $l2;
 
-    public function setUp() {
+    public function setUp():void {
         $this->mock = $this->getMock('\Ratchet\ConnectionInterface');
         $this->l1   = new ConnectionDecorator($this->mock);
         $this->l2   = new ConnectionDecorator($this->l1);
