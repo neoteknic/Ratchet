@@ -39,6 +39,20 @@ jobs:
           coverage: "none"
           ini-values: "zend.assertions=1"
 
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "COMPOSER_CACHE_DIR=$(composer config cache-files-dir)" >> $GITHUB_ENV
+
+      - name: "Cache Composer dependencies"
+        uses: "actions/cache@v2"
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-
+            ${{ runner.os }}-php-${{ matrix.php-version }}-
+            ${{ runner.os }}-php-
+
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v1"
         with:
