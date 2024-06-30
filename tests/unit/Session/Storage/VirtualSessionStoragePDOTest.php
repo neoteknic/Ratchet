@@ -15,7 +15,7 @@ class VirtualSessionStoragePDOTest extends \PHPUnit\Framework\TestCase {
 
     public function setUp():void {
         if (!extension_loaded('PDO') || !extension_loaded('pdo_sqlite')) {
-            return $this->markTestSkipped('Session test requires PDO and pdo_sqlite');
+             $this->markTestSkipped('Session test requires PDO and pdo_sqlite');
         }
 
         $schema = <<<SQL
@@ -26,7 +26,7 @@ CREATE TABLE `sessions` (
     `sess_lifetime` MEDIUMINT NOT NULL
 );
 SQL;
-        $this->_pathToDB = tempnam(sys_get_temp_dir(), 'SQ3');;
+        $this->_pathToDB = tempnam(sys_get_temp_dir(), 'SQ3');
         $dsn = 'sqlite:' . $this->_pathToDB;
 
         $pdo = new \PDO($dsn);
@@ -41,7 +41,7 @@ SQL;
         $this->_virtualSessionStorage->registerBag(new AttributeBag());
     }
 
-    public function tearDown() {
+    public function tearDown(): void {
         unlink($this->_pathToDB);
     }
 
